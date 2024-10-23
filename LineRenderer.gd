@@ -134,10 +134,7 @@ func cap(center, pivot, thickness, smoothing):
 		mesh.surface_add_vertex(array[i]);
 		mesh.surface_set_uv(Vector2(0.5, 0.5))
 		mesh.surface_add_vertex(center);
-		
-#func toggle_laser():
-	#var laser_mesh = get_node("MeshInstance3D")
-	#laser_mesh.visible = !laser_mesh.visible
+	
 
 func corner(center, start, end, smoothing):
 	var array = []

@@ -6,14 +6,11 @@ func _ready():
 	if xr_interface and xr_interface.is_initialized():
 		print("OpenXR initialized successfully")
 
-		# Turn off v-sync!
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 
-		# Change our main viewport to output to the HMD
 		get_viewport().use_xr = true
 	else:
 		print("OpenXR not initialized, please check if your headset is connected")
-		# Enable both raycasts at startup
 
 func _process(delta):
 	check_collision($XROrigin3D/LeftSaber/MeshInstance3D/RayCast3D, $XROrigin3D/LeftSaber/MeshInstance3D.material_override.albedo_color)
@@ -47,16 +44,16 @@ func set_laser_visibility(saber_path, is_visible):
 func _on_right_saber_button_pressed(name):
 	if name == "by_button":
 		XRServer.center_on_hmd(XRServer.RESET_BUT_KEEP_TILT, true)
-	elif name == "ax_button":  # Check if the correct button is pressed
+	elif name == "ax_button":
 			set_laser_visibility(right_saber_path, true)
 
 func _on_right_saber_button_released(name):
-	if name == "ax_button":  # Check if the correct button is release
+	if name == "ax_button":
 		set_laser_visibility(right_saber_path, false)
 
 # Left Controller
 func _on_left_saber_button_pressed(name):
-	if name == "ax_button":  # Similarly for left saber
+	if name == "ax_button":
 		set_laser_visibility(left_saber_path, true)
 
 func _on_left_saber_button_released(name):
